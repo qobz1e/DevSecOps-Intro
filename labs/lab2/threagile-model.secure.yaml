@@ -4,7 +4,7 @@ title: OWASP Juice Shop — Local Lab Threat Model
 date: 2025-09-18
 
 author:
-  name: Fanis Zinnurov f.zinnurov@innopolis.university
+  name: Student Name
   homepage: https://example.edu
 
 management_summary_comment: >
@@ -199,7 +199,7 @@ technical_assets:
       Direct to App (no proxy):
         target: juice-shop
         description: "Direct browser access to app (HTTP on 3000)."
-        protocol: https
+        protocol: http
         authentication: session-id
         authorization: enduser-identity-propagation
         tags: ["direct"]
@@ -244,7 +244,7 @@ technical_assets:
       To App:
         target: juice-shop
         description: "Proxy forwarding to app (HTTP on 3000 internally)."
-        protocol: https
+        protocol: http
         authentication: none
         authorization: none
         tags: []
@@ -316,7 +316,7 @@ technical_assets:
     tags: ["storage", "volume"]
     internet: false
     machine: virtual
-    encryption: transparent
+    encryption: none
     owner: Lab Owner
     confidentiality: internal
     integrity: important
