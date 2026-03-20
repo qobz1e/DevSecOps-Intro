@@ -1,0 +1,27 @@
+environments:
+  default:
+    target: http://localhost:3001
+
+contexts:
+  juice-shop:
+    includeInContextRegex: ".*"
+    authentication:
+      type: jsonBasedAuthentication
+      loginUrl: "http://localhost:3001/rest/user/login"
+      loginRequestData: '{"email":"admin@juice-sh.op","password":"admin123"}'
+      loggedInIndicatorRegex: '"authentication":'
+
+jobs:
+  - spider:
+      context: juice-shop
+      maxDepth: 5
+  - spiderAjax:
+      context: juice-shop
+      maxDepth: 5
+  - activeScan:
+      context: juice-shop
+      policyName: "Default Policy"
+
+report:
+  fileName: report-auth.html
+  format: HTML
